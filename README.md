@@ -9,3 +9,4 @@ Tamires Cordeiro | 2040482313023
 ---
 
 1. Cria aplicativo com [Angular 17](https://v17.angular.io/docs) - (Limitação da minha máquina pessoal)
+2. Limpa arquivos de estilização
