@@ -11,12 +11,12 @@ import { CardComponent } from '../../shared/components';
   standalone: true,
   imports: [AsyncPipe, CardComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   private homeService = inject(HomeService);
 
-  public colecao$: Observable<ColecaoDetalhe> = this.homeService.getHome().pipe(
-    map(res => res.colecaoDestaque)
-  );
+  public colecao$: Observable<ColecaoDetalhe> = this.homeService
+    .getHome()
+    .pipe(map((res) => res.colecaoDestaque));
 }
