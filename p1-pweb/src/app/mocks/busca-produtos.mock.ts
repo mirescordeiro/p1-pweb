@@ -2,6 +2,7 @@ export const buscaProdutos = {
   "colecao": "Sapatão",
   "produtos": [
     {
+      "id": "sap-01",
       "imagem": "./assets/imagens/bota_anarchista.jpg",
       "nome": "Bota Anarquista",
       "preco": 299.0,
@@ -17,6 +18,7 @@ export const buscaProdutos = {
       ]
     },
     {
+      "id": "sap-02",
       "imagem": "./assets/imagens/loafer_academico.jpg",
       "nome": "Loafer Acadêmico",
       "preco": 249.9,
@@ -32,6 +34,7 @@ export const buscaProdutos = {
       ]
     },
     {
+      "id": "sap-03",
       "imagem": "./assets/imagens/oxford_oradora.jpg",
       "nome": "Oxford Oradora",
       "preco": 399.9,
