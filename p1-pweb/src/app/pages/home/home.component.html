@@ -15,9 +15,24 @@
     </div>
   </section>
 
+  @if (homeDestaque$ | async; as colecao) {
   <section>
-    <h2>Coleção</h2>
-  </section>
-</main>
+    <h2>Coleção {{ colecao.nome }}</h2>
 
-<footer></footer>
+    @for(produto of colecao.produtos; track produto.id){
+    <button>
+      <img [src]="produto.imagem.url" [alt]="produto.imagem.descricao" />
+
+      <div>
+        <h3>{{ produto.nome }}</h3>
+        <p>{{ produto.preco | currency:'BRL':'symbol-narrow' }}</p>
+      </div>
+
+      <p>{{ produto.subtitulo }}</p>
+    </button>
+    }
+  </section>
+  } @else {
+  <div>skeleton</div>
+  }
+</main>
