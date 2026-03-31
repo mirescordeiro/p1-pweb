@@ -1,0 +1,29 @@
+<main>
+  <section>
+    <h1>Autonomia em cada passo</h1>
+
+    <div>
+      <h2>Andar é ocupar o seu espaço</h2>
+
+      <div>
+        <p>Flâneuse é estar no mundo sem pedir permissão.</p>
+        <p>Mulheres que caminham, atravessam, ocupam.</p>
+        <p>A gente toma as ruas. A gente existe.</p>
+      </div>
+
+      <p>Feminista. Sáfica. Sem pedir permissão.</p>
+    </div>
+  </section>
+
+  @if (colecao$ | async; as colecao) {
+  <section>
+    <h2>Coleção {{ colecao.nome }}</h2>
+
+    @for(produto of colecao.produtos; track produto.id){
+    <app-card [produto]="produto"></app-card>
+    }
+  </section>
+  } @else {
+  <div>skeleton</div>
+  }
+</main>
