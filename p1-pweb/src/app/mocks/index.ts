@@ -1,0 +1,1 @@
+export { GetHome } from "./get-home.mock"
