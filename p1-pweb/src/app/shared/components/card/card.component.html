@@ -1,0 +1,10 @@
+<button (click)="onClick()">
+  <img [src]="produto.imagem.url" [alt]="produto.imagem.descricao" width="50%" />
+
+  <div>
+    <h3>{{ produto.nome }}</h3>
+    <p>{{ produto.preco | currency:'BRL':'symbol-narrow' }}</p>
+  </div>
+
+  <p>{{ produto.subtitulo }}</p>
+</button>
