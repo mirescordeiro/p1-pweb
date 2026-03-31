@@ -1,0 +1,46 @@
+<main>
+  @if (produto$ | async; as produto) {
+  <section>
+    <img
+      [src]="produto.imagem.url"
+      [alt]="produto.imagem.descricao"
+      width="50%"
+    />
+
+    <div>
+      <h3>{{ produto.nome }}</h3>
+      <p>{{ produto.preco | currency : "BRL" : "symbol-narrow" }}</p>
+      <p>{{ produto.subtitulo }}</p>
+    </div>
+
+    <div>
+      <p>{{ produto.frase }}</p>
+      <p>{{ produto.descricao }}</p>
+    </div>
+
+    <form (ngSubmit)="adicionarNaCesta()">
+      @for(numero of produto.numeracao; track numero.tamanho){
+      <input
+        class="btn btn-primary btn-outline"
+        type="radio"
+        name="tamanho"
+        [value]="numero.tamanho"
+        [attr.aria-label]="numero.tamanho"
+        [class.btn-disabled]="!numero.disponivel"
+        [(ngModel)]="tamanhoSelecionado"
+      />
+      }
+
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!tamanhoSelecionado"
+      >
+        Adicionar ao manifesto
+      </button>
+    </form>
+  </section>
+  } @else {
+  <div>skeleton</div>
+  }
+</main>

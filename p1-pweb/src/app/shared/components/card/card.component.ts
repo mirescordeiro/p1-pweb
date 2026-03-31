@@ -17,6 +17,6 @@ export class CardComponent {
   private router = inject(Router)
 
   public onClick(): void {
-    this.router.navigate(['/produto', this.produto.id])
+    this.router.navigate(['produto', this.produto.id])
   }
 }
