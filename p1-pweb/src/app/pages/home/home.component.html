@@ -15,21 +15,12 @@
     </div>
   </section>
 
-  @if (homeDestaque$ | async; as colecao) {
+  @if (colecao$ | async; as colecao) {
   <section>
     <h2>Coleção {{ colecao.nome }}</h2>
 
     @for(produto of colecao.produtos; track produto.id){
-    <button>
-      <img [src]="produto.imagem.url" [alt]="produto.imagem.descricao" />
-
-      <div>
-        <h3>{{ produto.nome }}</h3>
-        <p>{{ produto.preco | currency:'BRL':'symbol-narrow' }}</p>
-      </div>
-
-      <p>{{ produto.subtitulo }}</p>
-    </button>
+    <app-card [produto]="produto"></app-card>
     }
   </section>
   } @else {
