@@ -18,3 +18,5 @@ Tamires Cordeiro | 2040482313023
 8. Mapeia produtos na home
 9. Cria componente card
 10. Estabelece mock de produto
+11. Cria página de produto
+12. Cria serviço de produto
