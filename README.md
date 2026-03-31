@@ -16,3 +16,5 @@ Tamires Cordeiro | 2040482313023
 6. Estabelece mock da home
 7. Cria serviço da home
 8. Mapeia produtos na home
+9. Cria componente card
+10. Estabelece mock de produto
