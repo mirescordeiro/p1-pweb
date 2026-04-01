@@ -20,3 +20,8 @@ Tamires Cordeiro | 2040482313023
 10. Estabelece mock de produto
 11. Cria página de produto
 12. Cria serviço de produto
+13. Cria página de cesta
+14. Cria interface de item-cesta
+15. Cria serviço de cesta
+16. Redireciona da página de produto para cesta
+17. Mapeia itens na cesta
