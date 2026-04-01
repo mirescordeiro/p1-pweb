@@ -12,11 +12,8 @@ describe('CardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CardComponent],
-      providers: [
-        { provide: Router, useValue: routerSpy }
-      ]
-    })
-      .compileComponents();
+      providers: [{ provide: Router, useValue: routerSpy }],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
@@ -28,9 +25,9 @@ describe('CardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call router onClick', () => {
-    component.onClick();
+  it('deve chamar o router aoClicar', () => {
+    component.aoClicar();
 
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/produto', 'sap-01']);
-  })
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['produto', 'sap-01']);
+  });
 });
