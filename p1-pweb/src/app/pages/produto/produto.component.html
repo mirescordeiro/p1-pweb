@@ -1,45 +1,53 @@
-@if (produto$ | async; as produto) {
-<section>
+<section class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  @if (produto$ | async; as produto) {
   <img
     [src]="produto.imagem.url"
     [alt]="produto.imagem.descricao"
-    width="50%"
+    width="100%"
   />
 
   <div>
-    <h3>{{ produto.nome }}</h3>
-    <p>{{ produto.preco | currency : "BRL" : "symbol-narrow" }}</p>
-    <p>{{ produto.subtitulo }}</p>
+    <div>
+      <h3 class="text-3xl py-3">{{ produto.nome }}</h3>
+      <p class="text-xl text-secondary uppercase font-bold pt-3">
+        {{ produto.preco | currency : "BRL" : "symbol-narrow" }}
+      </p>
+      <p class="text-sm text-neutral uppercase">
+        {{ produto.subtitulo }}
+      </p>
+    </div>
+
+    <div class="py-10">
+      <h4 class="text-xl text-primary italic font-bold pb-3">
+        {{ produto.frase }}
+      </h4>
+      <p>{{ produto.descricao }}</p>
+    </div>
+
+    <form class="flex flex-col" (ngSubmit)="adicionarNaCesta(produto)">
+      <div>
+        @for(numero of produto.numeracao; track numero.tamanho){
+        <input
+          class="btn btn-primary btn-outline mx-1"
+          type="radio"
+          name="tamanho"
+          [value]="numero.tamanho"
+          [disabled]="!numero.disponivel"
+          [attr.aria-label]="numero.tamanho"
+          [class.btn-disabled]="!numero.disponivel"
+          [(ngModel)]="tamanhoSelecionado"
+        />
+        }
+      </div>
+
+      <button
+        class="btn btn-primary mt-10"
+        type="submit"
+        [disabled]="!tamanhoSelecionado"
+      >
+        Adicionar ao manifesto
+      </button>
+    </form>
   </div>
-
-  <div>
-    <p>{{ produto.frase }}</p>
-    <p>{{ produto.descricao }}</p>
-  </div>
-
-  <form (ngSubmit)="adicionarNaCesta(produto)">
-    @for(numero of produto.numeracao; track numero.tamanho){
-    <input
-      class="btn btn-primary btn-outline"
-      type="radio"
-      name="tamanho"
-      [value]="numero.tamanho"
-      [disabled]="!numero.disponivel"
-      [attr.aria-label]="numero.tamanho"
-      [class.btn-disabled]="!numero.disponivel"
-      [(ngModel)]="tamanhoSelecionado"
-    />
-    }
-
-    <button
-      class="btn btn-primary"
-      type="submit"
-      [disabled]="!tamanhoSelecionado"
-    >
-      Adicionar ao manifesto
-    </button>
-  </form>
+  }
 </section>
-} @else {
-<div>skeleton</div>
-}
