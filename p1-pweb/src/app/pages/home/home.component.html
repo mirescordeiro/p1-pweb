@@ -1,31 +1,43 @@
-<section>
-  <h1>Autonomia em cada passo</h1>
+<section class="hero bg-primary p-10">
+  <div class="hero-content flex-col lg:flex-row">
+    <img
+      src="./assets/imagens/bota-home.jpg"
+      class="max-h-xs rounded-lg shadow-2xl pr-5"
+    />
 
-  <div>
-    <h2>Andar é ocupar o seu espaço</h2>
+    <div class="text-primary-content">
+      <h2 class="text-3xl text-white font-bold italic py-3">
+        Andar é ocupar o seu espaço
+      </h2>
 
-    <div>
       <p>Flâneuse é estar no mundo sem pedir permissão.</p>
       <p>Mulheres que caminham, atravessam, ocupam.</p>
       <p>A gente toma as ruas. A gente existe.</p>
-    </div>
 
-    <p>Feminista. Sáfica. Sem pedir permissão.</p>
+      <p class="text-sm text-secondary uppercase font-bold py-3">
+        Feminista. Sáfica. Sem pedir permissão.
+      </p>
+    </div>
   </div>
 </section>
 
-@if (colecao$ | async; as colecao) {
-<section>
-  <h2>Coleção {{ colecao.nome }}</h2>
+<section class="py-8">
+  @if (colecao$ | async; as colecao) {
+  <h2 class="text-2xl font-bold italic py-3">Coleção {{ colecao.nome }}</h2>
 
-  <ul>
+  <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     @for(produto of colecao.produtos; track produto.id){
     <li>
       <app-card [produto]="produto"></app-card>
     </li>
     }
   </ul>
+  } @else {
+  <div class="skeleton h-8 w-48 mb-3"></div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="skeleton h-48 w-full"></div>
+    <div class="skeleton h-48 w-full"></div>
+    <div class="skeleton h-48 w-full"></div>
+  </div>
+  }
 </section>
-} @else {
-<div>skeleton</div>
-}
