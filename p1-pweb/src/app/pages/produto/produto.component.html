@@ -18,13 +18,14 @@
       <p>{{ produto.descricao }}</p>
     </div>
 
-    <form (ngSubmit)="adicionarNaCesta()">
+    <form (ngSubmit)="adicionarNaCesta(produto)">
       @for(numero of produto.numeracao; track numero.tamanho){
       <input
         class="btn btn-primary btn-outline"
         type="radio"
         name="tamanho"
         [value]="numero.tamanho"
+        [disabled]="!numero.disponivel"
         [attr.aria-label]="numero.tamanho"
         [class.btn-disabled]="!numero.disponivel"
         [(ngModel)]="tamanhoSelecionado"
