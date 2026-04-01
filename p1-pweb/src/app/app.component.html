@@ -1,7 +1,20 @@
-<router-outlet />
+<app-header></app-header>
 
-<footer>
-  <h4>Flâneuse</h4>
-  <p>Entre identidade queer e presença na cidade. Pra quem caminha, pensa e ocupa espaço.</p>
-  <p>© 2026 Flâneuse — Tamires Cordeiro</p>
+<main class="bg-base-200 p-10">
+  <router-outlet />
+</main>
+
+<footer
+  class="footer sm:footer-horizontal bg-primary text-primary-content p-10"
+>
+  <div>
+    <h6 class="footer-title text-xl italic text-neutral">Flâneuse</h6>
+
+    <p>
+      Entre identidade queer e presença na cidade. <br />
+      Pra quem caminha, pensa e ocupa espaço.
+    </p>
+
+    <p>© {{ copyrightAno }} Flâneuse — Tamires Cordeiro</p>
+  </div>
 </footer>

@@ -2,7 +2,7 @@ import { Component, Input, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { Router } from '@angular/router';
 
-import { Produto } from '../../../interfaces';
+import { ItemCesta, Produto } from '../../../interfaces';
 
 @Component({
   selector: 'app-card',
@@ -12,7 +12,7 @@ import { Produto } from '../../../interfaces';
   styleUrl: './card.component.scss',
 })
 export class CardComponent {
-  @Input() produto: Produto;
+  @Input() produto: Produto | ItemCesta;
 
   private router = inject(Router);
 
