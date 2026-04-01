@@ -1,73 +1,68 @@
-<main>
-  <h1>Sacola</h1>
+<h1>Sacola</h1>
 
-  @if(cesta$ | async; as itens ){
-  <section>
-    <ul>
-      @for(item of itens; track item.id){
-      <li>
-        <app-card [produto]="item"></app-card>
-        <span>Tamanho: {{ item.tamanho }}</span>
+@if(cesta$ | async; as itens ){
+<section>
+  <ul>
+    @for(item of itens; track item.id){
+    <li>
+      <app-card [produto]="item"></app-card>
+      <span>Tamanho: {{ item.tamanho }}</span>
 
+      <div>
         <div>
-          <div>
-            <button class="btn btn-secondary" (click)="removerDaCesta(item)">
-              <svg
-                width="14"
-                height="2"
-                viewBox="0 0 14 2"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path fill="currentColor" d="M0 2V0H14V2H0V2" />
-              </svg>
-            </button>
+          <button class="btn btn-secondary" (click)="removerDaCesta(item)">
+            <svg
+              width="14"
+              height="2"
+              viewBox="0 0 14 2"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path fill="currentColor" d="M0 2V0H14V2H0V2" />
+            </svg>
+          </button>
 
-            <span>{{ item.quantidade }}</span>
+          <span>{{ item.quantidade }}</span>
 
-            <button class="btn btn-secondary" (click)="adicionarNaCesta(item)">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill="currentColor"
-                  d="M6 8H0V6H6V0H8V6H14V8H8V14H6V8V8"
-                />
-              </svg>
-            </button>
-          </div>
+          <button class="btn btn-secondary" (click)="adicionarNaCesta(item)">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path fill="currentColor" d="M6 8H0V6H6V0H8V6H14V8H8V14H6V8V8" />
+            </svg>
+          </button>
         </div>
-      </li>
-      } @empty {
-      <li>
-        <span>Sua sacola está vazia.</span>
-        <span>Vamos ocupar?</span>
-      </li>
-      }
-    </ul>
+      </div>
+    </li>
+    } @empty {
+    <li>
+      <span>Sua sacola está vazia.</span>
+      <span>Vamos ocupar?</span>
+    </li>
+    }
+  </ul>
+
+  <div>
+    @if(total$ | async; as precoTotal){
+    <div>
+      <div class="divider"></div>
+      <p>Total</p>
+      <p>{{ precoTotal | currency : "BRL" : "symbol-narrow" }}</p>
+    </div>
 
     <div>
-      @if(total$ | async; as precoTotal){
-      <div>
-        <div class="divider"></div>
-        <p>Total</p>
-        <p>{{ precoTotal | currency : "BRL" : "symbol-narrow" }}</p>
-      </div>
-
-      <div>
-        <button class="btn btn-primary">Finalizar compra</button>
-        <button class="btn btn-secondary" (click)="limparSacola()">
-          Esvaziar sacola
-        </button>
-      </div>
-      }
+      <button class="btn btn-primary">Finalizar compra</button>
+      <button class="btn btn-secondary" (click)="limparSacola()">
+        Esvaziar sacola
+      </button>
     </div>
-  </section>
-  } @else {
-  <div>skeleton</div>
-  }
-</main>
+    }
+  </div>
+</section>
+} @else {
+<div>skeleton</div>
+}
