@@ -1,2 +1,3 @@
-export { HomeService } from './home.service'
-export { ProdutoService } from './produto.service'
+export { CestaService } from './cesta.service';
+export { HomeService } from './home.service';
+export { ProdutoService } from './produto.service';

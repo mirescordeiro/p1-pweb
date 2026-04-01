@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, map, of, switchMap } from 'rxjs';
 
-import { ProdutoService } from '../../services';
+import { CestaService, ProdutoService } from '../../services';
+import { ItemCesta, Produto } from '../../interfaces';
 
 @Component({
   selector: 'app-produto',
@@ -13,13 +14,19 @@ import { ProdutoService } from '../../services';
   templateUrl: './produto.component.html',
   styleUrl: './produto.component.scss',
 })
-export class ProdutoComponent {
-  public tamanhoSelecionado: number;
+export class ProdutoComponent implements OnInit {
+  public tamanhoSelecionado: number | null = null;
 
-  private route = inject(ActivatedRoute);
+  private activeRoute = inject(ActivatedRoute);
+  private cestaService = inject(CestaService);
   private produtoService = inject(ProdutoService);
+  private router = inject(Router);
 
-  public produto$ = this.route.paramMap.pipe(
+  public ngOnInit(): void {
+    this.tamanhoSelecionado = null;
+  }
+
+  public produto$ = this.activeRoute.paramMap.pipe(
     map((params) => params.get('id')),
     switchMap((id) => this.produtoService.getProduto(id!)),
     catchError((error) => {
@@ -28,5 +35,15 @@ export class ProdutoComponent {
     })
   );
 
-  public adicionarNaCesta(): void {}
+  public adicionarNaCesta(produto: Produto): void {
+    const { id, imagem, nome, preco } = produto;
+    const item: ItemCesta = {
+      ...{ id, imagem, nome, preco },
+      tamanho: this.tamanhoSelecionado!,
+      quantidade: 1,
+    };
+
+    this.cestaService.adicionarItem(item);
+    this.router.navigate(['cesta']);
+  }
 }

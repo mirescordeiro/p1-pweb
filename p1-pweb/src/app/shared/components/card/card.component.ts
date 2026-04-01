@@ -9,14 +9,14 @@ import { Produto } from '../../../interfaces';
   standalone: true,
   imports: [CurrencyPipe],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.scss'
+  styleUrl: './card.component.scss',
 })
 export class CardComponent {
   @Input() produto: Produto;
 
-  private router = inject(Router)
+  private router = inject(Router);
 
-  public onClick(): void {
-    this.router.navigate(['produto', this.produto.id])
+  public aoClicar(): void {
+    this.router.navigate(['produto', this.produto.id]);
   }
 }
