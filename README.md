@@ -26,3 +26,5 @@ Tamires Cordeiro | 2040482313023
 16. Redireciona da página de produto para cesta
 17. Mapeia itens na cesta
 18. Estiliza aplicação
+19. Cria página de login
+20. Cria serviço de login
