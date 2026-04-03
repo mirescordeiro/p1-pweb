@@ -23,4 +23,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/cesta/cesta.component').then((m) => m.CestaComponent),
   },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.component').then((m) => m.LoginComponent),
+  },
 ];
