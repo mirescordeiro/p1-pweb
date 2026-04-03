@@ -5,5 +5,6 @@ export { Produto } from './produto.interface';
 
 export { LoginResponse } from './responses/login.interface';
 export { CadastroResponse } from './responses/cadastro.interface';
+export { RecuperarSenhaResponse } from './responses/recuperar-senha.interface';
 
 export { CadastroRequest } from './requests/cadastro.request.interface';
