@@ -1,0 +1,57 @@
+<section class="max-w-2xl mx-auto py-16">
+  <div class="card lg:card-side bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h1 class="text-3xl font-bold italic pb-3">Recupere sua identidade</h1>
+      <p class="pb-3">
+        Digite seu e-mail e a gente te ajuda a retomar seu lugar
+      </p>
+
+      <form
+        [formGroup]="form"
+        (ngSubmit)="recuperarConta()"
+        class="flex flex-col gap-3"
+      >
+        <label class="input input-bordered flex items-center gap-2">
+          E-mail
+          <input
+            type="email"
+            class="grow"
+            placeholder="maria-joao@site.com"
+            formControlName="email"
+          />
+        </label>
+
+        @if (form.get('email')?.touched && form.get('email')?.invalid) {
+        <span class="text-error text-sm">
+          Ops, esse e-mail não parece válido
+        </span>
+        }
+
+        <div class="card-actions w-full mt-3 flex-col">
+          <button class="btn btn-primary w-full" type="submit">
+            Enviar link de recuperação
+          </button>
+        </div>
+
+        @if (mensagem) {
+        <div class="alert alert-success mt-4">
+          <span>{{ mensagem }}</span>
+        </div>
+        } @if (erroRecuperar) {
+        <div class="alert alert-error mt-4">
+          <span>{{ erroRecuperar }}</span>
+        </div>
+        }
+      </form>
+
+      <div class="pt-6">
+        <a
+          class="text-secondary hover:underline underline-offset-4"
+          routerLink="/login"
+        >
+          Voltar para o login
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

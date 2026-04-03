@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { CadastroService } from '../../services/cadastro.service';
 import { CadastroRequest } from '../../interfaces';
+import { ContaService } from '../../services';
 
 @Component({
   selector: 'app-cadastro',
@@ -15,7 +15,7 @@ export class CadastroComponent {
   erroCadastro: string | null = null;
 
   private fb = inject(FormBuilder);
-  private cadastroService = inject(CadastroService);
+  private contaService = inject(ContaService);
   private router = inject(Router);
 
   form = this.fb.group({
@@ -24,9 +24,9 @@ export class CadastroComponent {
     senha: ['', [Validators.required, Validators.minLength(6)]],
   });
 
-  fazerCadastro() {
+  public fazerCadastro(): void {
     if (this.form.valid) {
-      this.cadastroService
+      this.contaService
         .cadastrar(this.form.value as CadastroRequest)
         .subscribe({
           next: (response) => {

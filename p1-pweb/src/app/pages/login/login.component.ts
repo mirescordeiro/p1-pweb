@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 
-import { LoginService } from '../../services';
+import { ContaService } from '../../services';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent {
   public erroLogin: string | null = null;
 
   private fb = inject(FormBuilder);
-  private loginService = inject(LoginService);
+  private contaService = inject(ContaService);
   private router = inject(Router);
 
   form = this.fb.group({
@@ -27,7 +27,7 @@ export class LoginComponent {
     if (this.form.valid) {
       const { email, senha } = this.form.value;
 
-      this.loginService.autenticar(email!, senha!).subscribe({
+      this.contaService.autenticar(email!, senha!).subscribe({
         next: (response) => {
           if (response.token) {
             // TODO: salvar o token no localStorage
