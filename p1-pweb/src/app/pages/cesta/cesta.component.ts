@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 import { CestaService } from '../../services';
 import { CardComponent } from '../../shared/components';
@@ -8,7 +9,7 @@ import { ItemCesta } from '../../interfaces';
 @Component({
   selector: 'app-cesta',
   standalone: true,
-  imports: [AsyncPipe, CurrencyPipe, CardComponent],
+  imports: [AsyncPipe, CurrencyPipe, CardComponent, RouterLink],
   templateUrl: './cesta.component.html',
   styleUrl: './cesta.component.scss',
 })
