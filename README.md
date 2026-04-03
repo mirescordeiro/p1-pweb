@@ -28,3 +28,5 @@ Tamires Cordeiro | 2040482313023
 18. Estiliza aplicação
 19. Cria página de login
 20. Cria serviço de login
+21. Cria página de cadastro
+22. Cria serviço de cadastro
