@@ -31,3 +31,4 @@ Tamires Cordeiro | 2040482313023
 21. Cria página de cadastro
 22. Cria serviço de cadastro
 23. Cria serviço de conta e refatora login e cadastro
+24. Cria página de recuperar senha
