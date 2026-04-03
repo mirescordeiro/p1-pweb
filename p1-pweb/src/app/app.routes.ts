@@ -35,4 +35,11 @@ export const routes: Routes = [
         (m) => m.CadastroComponent
       ),
   },
+  {
+    path: 'recuperar-senha',
+    loadComponent: () =>
+      import('./pages/recuperar-senha/recuperar-senha.component').then(
+        (m) => m.RecuperarSenhaComponent
+      ),
+  },
 ];
