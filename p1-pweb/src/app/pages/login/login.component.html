@@ -3,7 +3,11 @@
     <div class="card-body">
       <h1 class="text-3xl font-bold italic pb-6">Bem-vinda de volta</h1>
 
-      <form [formGroup]="form" (ngSubmit)="fazerLogin()">
+      <form
+        [formGroup]="form"
+        (ngSubmit)="fazerLogin()"
+        class="flex flex-col gap-3"
+      >
         <label class="input input-bordered flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -21,16 +25,16 @@
           <input
             type="text"
             class="grow"
-            placeholder="e-mail"
+            placeholder="E-mail"
             formControlName="email"
           />
         </label>
 
         @if (form.get('email')?.touched && form.get('email')?.invalid) {
-        <span class="text-error text-sm my-3">E-mail inválido</span>
+        <span class="text-error text-sm">E-mail inválido</span>
         }
 
-        <label class="input input-bordered flex items-center gap-2 mt-3">
+        <label class="input input-bordered flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -46,18 +50,18 @@
           <input
             type="password"
             class="grow"
-            placeholder="senha"
+            placeholder="Senha"
             formControlName="senha"
           />
         </label>
 
         @if (form.get('senha')?.touched && form.get('senha')?.invalid) {
-        <span class="text-error text-sm my-3">
-          Senha deve ter no mínimo 6 caracteres
+        <span class="text-error text-sm">
+          A senha deve ter pelo menos 6 caracteres
         </span>
         }
 
-        <div class="card-actions w-full mt-3">
+        <div class="card-actions w-full">
           <button class="btn btn-primary w-full" type="submit">
             Entrar no manifesto
           </button>
@@ -73,7 +77,10 @@
       <div class="pt-6">
         <p>
           Chegando agora?
-          <a class="text-secondary hover:underline underline-offset-4">
+          <a
+            class="text-secondary hover:underline underline-offset-4"
+            routerLink="/cadastro"
+          >
             Crie sua conta
           </a>
         </p>

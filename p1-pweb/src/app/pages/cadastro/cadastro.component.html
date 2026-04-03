@@ -1,0 +1,84 @@
+<section class="max-w-2xl mx-auto py-16">
+  <div class="card lg:card-side bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h1 class="text-3xl font-bold italic pb-3">Criar conta</h1>
+      <p class="pb-3">Preencha seus dados e ocupe seu espaço por aqui</p>
+
+      <form
+        [formGroup]="form"
+        (ngSubmit)="fazerCadastro()"
+        class="flex flex-col gap-3"
+      >
+        <label class="input input-bordered flex items-center gap-2">
+          Nome
+          <input
+            type="text"
+            class="grow"
+            placeholder="Maria João"
+            formControlName="nome"
+          />
+        </label>
+
+        @if (form.get('nome')?.touched && form.get('nome')?.invalid) {
+        <span class="text-error text-sm"> Digite como quer ser chamada </span>
+        }
+
+        <label class="input input-bordered flex items-center gap-2">
+          E-mail
+          <input
+            type="email"
+            class="grow"
+            placeholder="maria-joao@site.com"
+            formControlName="email"
+          />
+        </label>
+
+        @if (form.get('email')?.touched && form.get('email')?.invalid) {
+        <span class="text-error text-sm">
+          Ops, esse e-mail não parece válido
+        </span>
+        }
+
+        <label class="input input-bordered flex items-center gap-2">
+          Senha
+          <input
+            type="password"
+            class="grow"
+            placeholder="mínimo 6 caracteres"
+            formControlName="senha"
+          />
+        </label>
+
+        @if (form.get('senha')?.touched && form.get('senha')?.invalid) {
+        <span class="text-error text-sm">
+          Use pelo menos 6 caracteres na senha
+        </span>
+        }
+
+        <div class="card-actions w-full mt-3 flex-col">
+          <button class="btn btn-primary w-full" type="submit">
+            Ocupar meu espaço
+          </button>
+        </div>
+
+        @if (erroCadastro) {
+        <div class="alert alert-error mt-4">
+          <span>{{ erroCadastro }}</span>
+        </div>
+        }
+      </form>
+
+      <div class="pt-6">
+        <p>
+          Já tem uma conta?
+          <a
+            class="text-secondary hover:underline underline-offset-4"
+            routerLink="/login"
+          >
+            Entrar
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
